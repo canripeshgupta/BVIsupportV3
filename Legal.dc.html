@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy &amp; Terms | BVI Support</title>
+<meta name="description" content="Privacy policy and terms of engagement for BVI Support — how client records are handled, retained and deleted, and the terms on which our accounting services are provided.">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="./favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;padding:0;background:#F5F2E9;}
+  body{font-family:'IBM Plex Sans',sans-serif;color:#1E2B24;-webkit-font-smoothing:antialiased;}
+  a{color:#9A7B3F;text-decoration:none;}
+  a:hover{color:#7C6230;}
+  ::selection{background:#132A20;color:#F5F2E9;}
+</style>
+</helmet>
+
+<div style="min-width:1100px">
+<header style="display:flex;align-items:center;justify-content:space-between;padding:22px 56px;border-bottom:1px solid #9A7B3F;background:#F5F2E9;position:sticky;top:0;z-index:10">
+  <a href="Home.dc.html" style="display:flex;align-items:center;gap:14px;color:#132A20">
+    <div style="width:40px;height:40px;background:#132A20;position:relative">
+      <div style="position:absolute;left:0;right:0;top:13px;height:1px;background:#9A7B3F"></div>
+      <div style="position:absolute;left:0;right:0;top:26px;height:1px;background:#9A7B3F"></div>
+      <div style="position:absolute;top:0;bottom:0;left:13px;width:1px;background:#9A7B3F"></div>
+      <div style="position:absolute;top:0;bottom:0;left:26px;width:1px;background:#9A7B3F"></div>
+      <div style="position:absolute;top:23px;left:23px;width:7px;height:7px;border-radius:50%;background:#C9A55C"></div>
+    </div>
+    <div>
+      <div style="font-family:'EB Garamond',serif;font-weight:600;font-size:21px;color:#132A20;letter-spacing:.02em">BVI Support</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;color:#8A8062;text-transform:uppercase">Accounting &amp; compliance for BVI companies</div>
+    </div>
+  </a>
+  <nav style="display:flex;align-items:center;gap:34px;font-size:15px;font-weight:500">
+    <a href="Services.dc.html" style="color:#3D4A41" style-hover="color:#9A7B3F">Services</a>
+    <a href="Pricing.dc.html" style="color:#3D4A41" style-hover="color:#9A7B3F">Pricing</a>
+    <a href="About.dc.html" style="color:#3D4A41" style-hover="color:#9A7B3F">About &amp; Credentials</a>
+    <a href="Contact.dc.html" style="background:#132A20;color:#F5F2E9;padding:12px 24px;font-weight:500;letter-spacing:.02em" style-hover="background:#9A7B3F;color:#132A20">Contact Today!</a>
+  </nav>
+</header>
+
+<section style="background:#132A20;color:#E9EBE2;padding:72px 56px">
+  <div style="max-width:880px;margin:0 auto;position:relative">
+    <div style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:190px;height:190px;border:1px solid rgba(154,123,63,.3)"><div style="position:absolute;left:0;right:0;top:63px;height:1px;background:rgba(154,123,63,.3)"></div><div style="position:absolute;left:0;right:0;top:126px;height:1px;background:rgba(154,123,63,.3)"></div><div style="position:absolute;top:0;bottom:0;left:63px;width:1px;background:rgba(154,123,63,.3)"></div><div style="position:absolute;top:0;bottom:0;left:126px;width:1px;background:rgba(154,123,63,.3)"></div><div style="position:absolute;top:115px;left:115px;width:24px;height:24px;border-radius:50%;background:rgba(201,165,92,.85)"></div></div>
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+      <div style="width:36px;height:1px;background:#9A7B3F"></div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#C9A55C">Legal</div>
+    </div>
+    <h1 style="font-family:'EB Garamond',serif;font-weight:500;font-size:44px;line-height:1.12;margin:0 0 14px;color:#F5F2E9">Privacy &amp; terms.</h1>
+    <p style="font-size:16.5px;line-height:1.7;color:#A8B5A5;margin:0;max-width:52ch;position:relative">Plain-language summaries. The signed NDA and data processing agreement govern any engagement; where they differ from this page, they prevail.</p>
+  </div>
+</section>
+
+<section style="padding:80px 56px;background:#F5F2E9">
+  <div style="max-width:880px;margin:0 auto">
+    <h2 style="font-family:'EB Garamond',serif;font-weight:500;font-size:30px;margin:0 0 24px;color:#132A20">Privacy</h2>
+    <sc-for list="{{ privacy }}" as="p" hint-placeholder-count="6">
+      <div style="display:grid;grid-template-columns:220px 1fr;gap:32px;padding:22px 0;border-bottom:1px solid #D8D0B8">
+        <div style="font-weight:600;font-size:15.5px;color:#132A20">{{ p.title }}</div>
+        <div style="font-size:15.5px;line-height:1.7;color:#3D4A41">{{ p.body }}</div>
+      </div>
+    </sc-for>
+    <h2 style="font-family:'EB Garamond',serif;font-weight:500;font-size:30px;margin:64px 0 24px;color:#132A20">Terms of engagement</h2>
+    <sc-for list="{{ terms }}" as="t" hint-placeholder-count="6">
+      <div style="display:grid;grid-template-columns:220px 1fr;gap:32px;padding:22px 0;border-bottom:1px solid #D8D0B8">
+        <div style="font-weight:600;font-size:15.5px;color:#132A20">{{ t.title }}</div>
+        <div style="font-size:15.5px;line-height:1.7;color:#3D4A41">{{ t.body }}</div>
+      </div>
+    </sc-for>
+    <p style="font-size:14px;line-height:1.7;color:#8A8062;margin:40px 0 0">BVI Support is a trading name of Integrated Accounting and Business Services Pvt Ltd (CIN U74140DL2019PTC356826). It is not affiliated with, endorsed by, or connected to the BVI Financial Services Commission, the Registry of Corporate Affairs, BVI Finance, or the Government of the Virgin Islands. We are not a registered agent. Nothing on this site is legal, tax or accounting advice. Questions: <a href="mailto:contact@bvisupport.com">contact@bvisupport.com</a>.</p>
+  </div>
+</section>
+
+<footer style="background:#0D1F17;color:#8FA093;padding:44px 56px;font-size:12.5px;line-height:1.7">
+  <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap">
+    <div style="display:flex;gap:24px">
+      <a href="Home.dc.html" style="color:#8FA093" style-hover="color:#C9A55C">Home</a>
+      <a href="Services.dc.html" style="color:#8FA093" style-hover="color:#C9A55C">Services</a>
+      <a href="Pricing.dc.html" style="color:#8FA093" style-hover="color:#C9A55C">Pricing</a>
+      <a href="About.dc.html" style="color:#8FA093" style-hover="color:#C9A55C">About &amp; credentials</a>
+      <a href="Contact.dc.html" style="color:#8FA093" style-hover="color:#C9A55C">Contact</a>
+    </div>
+    <div>© 2026 BVI Support · Integrated Accounting and Business Services Pvt Ltd group</div>
+  </div>
+</footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const header = document.querySelector('header');
+    const onScroll = () => { if (header) header.style.boxShadow = window.scrollY > 8 ? '0 6px 24px rgba(19,42,32,.14)' : 'none'; };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    const io = new IntersectionObserver((es) => { es.forEach((e) => { const t = e.target; if (!e.isIntersecting) return; t.style.opacity = '1'; t.style.transform = 'translateY(0)'; setTimeout(() => { t.style.transform = ''; t.style.transition = ''; }, 900); io.unobserve(t); }); }, { threshold: 0.08 });
+    document.querySelectorAll('section, footer').forEach((s, i) => {
+      if (i === 0) return;
+      const hasSticky = s.querySelector('[style*="sticky"]');
+      s.style.transition = 'opacity .7s ease, transform .7s ease';
+      s.style.opacity = '0';
+      if (!hasSticky) s.style.transform = 'translateY(26px)';
+      io.observe(s);
+    });
+  }
+  renderVals() {
+    return {
+      privacy: [
+        {title:"What we collect", body:"Contact details you send us (name, firm, email, phone) and, under a signed NDA, the client records needed to prepare the engaged work — bank statements, custodian reports, invoices and company documents."},
+        {title:"Why we process it", body:"Solely to prepare the accounting work you engage us for, to communicate about it, and to meet our own professional and legal obligations. We do not sell data, run advertising, or use client records for any other purpose."},
+        {title:"Who can access it", body:"The named engagement team only: preparer, reviewer and engagement manager. Nothing is outsourced onward without your written consent."},
+        {title:"How it is protected", body:"Files are shared and stored through secure, access-controlled channels, restricted to the engagement team. The information-security summary is available on request."},
+        {title:"How long we keep it", body:"Working papers are retained for the period set in the data processing agreement, then deleted on schedule — with written confirmation of deletion if you request it."},
+        {title:"Your rights", body:"You may request a copy, correction or deletion of the personal data we hold, at any time, by writing to contact@bvisupport.com. We respond within one business day."},
+      ],
+      terms: [
+        {title:"Scope of service", body:"We prepare accounting records, Financial Annual Returns and financial statements from the records provided. We are not a registered agent, and we do not file with the Registry; returns are delivered to you or your registered agent for submission."},
+        {title:"Fees", body:"Every file receives a fixed written quote before work starts. The quoted fee does not change after acceptance. Invoices are issued monthly in arrears in USD, GBP or EUR."},
+        {title:"Turnaround", body:"Five working days from complete records is the standard, stated per file at quoting. If a file cannot meet it, we say so before accepting the work."},
+        {title:"Quality & rework", body:"Every file passes a two-stage review — preparer and separate qualified reviewer. Rework on anything we get wrong is free."},
+        {title:"Confidentiality", body:"A mutual NDA is available on request and signed before any client record is transferred. We never approach end clients of a registered agent or corporate service provider, during or after an engagement."},
+        {title:"Reliance", body:"Deliverables are prepared for the engaging party from the records supplied, without audit. Directors remain responsible for the accuracy and completeness of the underlying records and for filing obligations."},
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>
