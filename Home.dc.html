@@ -28,10 +28,70 @@
   a{color:#9A7B3F;text-decoration:none;}
   a:hover{color:#7C6230;}
   ::selection{background:#132A20;color:#F5F2E9;}
+
+  /* ===================================================================
+     RESPONSIVE — tablet & mobile
+     The page is authored at a fixed desktop width with inline styles;
+     these rules override those inline styles at narrower widths.
+     =================================================================== */
+  img{max-width:100%;height:auto;}
+
+  @media (max-width:1180px){
+    /* release the fixed 1100px min-width shell */
+    #dc-root [style*="min-width:1100px"],
+    #dc-root [style*="min-width: 1100px"]{min-width:0 !important;}
+  }
+
+  @media (max-width:960px){
+    /* collapse every multi-column grid to a single column */
+    #dc-root [style*="grid-template-columns"]{grid-template-columns:1fr !important;}
+
+    /* tame oversized gaps once content is stacked */
+    #dc-root [style*="gap:80px"],#dc-root [style*="gap: 80px"],
+    #dc-root [style*="gap:72px"],#dc-root [style*="gap: 72px"],
+    #dc-root [style*="gap:64px"],#dc-root [style*="gap: 64px"],
+    #dc-root [style*="gap:48px"],#dc-root [style*="gap: 48px"]{gap:28px !important;}
+
+    /* trim the wide frame padding */
+    #dc-root header,#dc-root section,#dc-root footer{
+      padding-left:22px !important;padding-right:22px !important;
+    }
+    #dc-root [style*="padding: 84px 56px;"],#dc-root [style*="padding: 88px 56px;"],
+    #dc-root [style*="padding: 92px 56px;"],#dc-root [style*="padding: 96px 56px;"],
+    #dc-root [style*="padding: 100px 56px;"],#dc-root [style*="padding: 72px 56px;"],
+    #dc-root [style*="padding: 80px 56px;"]{padding-top:60px !important;padding-bottom:60px !important;}
+
+    /* header + nav wrap instead of overflowing */
+    #dc-root header{flex-wrap:wrap;gap:12px 18px;padding-top:14px !important;padding-bottom:14px !important;}
+    #dc-root nav{flex-wrap:wrap;gap:12px 18px !important;font-size:13px !important;}
+
+    /* flex rows that distribute space are allowed to wrap */
+    #dc-root [style*="display: flex"][style*="justify-content"]{flex-wrap:wrap;}
+
+    /* hide oversized hero decoration squares that would overlap text */
+    #dc-root [style*="width: 190px"][style*="position: absolute"]{display:none !important;}
+    /* vertical dividers / no-wrap rules don't make sense once stacked */
+    #dc-root [style*="border-right"]{border-right:0 !important;}
+    #dc-root [style*="flex-wrap:nowrap"],#dc-root [style*="flex-wrap: nowrap"]{flex-wrap:wrap !important;}
+    #dc-root [style*="white-space:nowrap"],#dc-root [style*="white-space: nowrap"]{white-space:normal !important;}
+
+    /* drop hard-coded pixel widths */
+    #dc-root [style*="width:656px"],#dc-root [style*="width: 656px"]{width:auto !important;height:auto !important;}
+
+    /* fluid headings */
+    #dc-root h1{font-size:clamp(27px,6.6vw,40px) !important;}
+    #dc-root h2{font-size:clamp(23px,5.2vw,32px) !important;}
+    #dc-root h3,#dc-root h4{font-size:clamp(19px,4.4vw,25px) !important;}
+  }
+
+  @media (max-width:520px){
+    #dc-root header,#dc-root section,#dc-root footer{padding-left:16px !important;padding-right:16px !important;}
+    #dc-root [style*="grid-template-columns"]{gap:16px !important;}
+  }
 </style>
 </helmet>
 
-<div style="min-width:1100px">
+<div style="min-width:0;overflow-x:clip">
 <!-- HEADER -->
 <header style="display:flex;align-items:center;justify-content:space-between;padding:22px 56px;border-bottom:1px solid #9A7B3F;background:#F5F2E9;position:sticky;top:0;z-index:10">
   <a href="Home.dc.html" style="display:flex;align-items:center;gap:14px;color:#132A20">
