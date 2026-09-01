@@ -1,16 +1,47 @@
-# Return a proper 404 for missing pages.
-# Without this, Hostinger/LiteSpeed serves a generic "503 Service Unavailable"
-# for any path that doesn't exist, which tells search engines to retry later
-# instead of recording the page as gone.
+# Clean URLs + proper 404s for the BVI Support static site.
+#
+# The pages are the *.dc.html files. This maps them onto extensionless paths
+# (/, /services, /pricing, /about, /contact, /legal) without an extra redirect,
+# and 301s the old/ugly URLs to the clean ones. It also forces a real 404 for
+# missing paths — Hostinger/LiteSpeed otherwise answers those with a generic
+# "503 Service Unavailable".
 
-Options -Indexes
+Options -Indexes -MultiViews
+DirectoryIndex Home.dc.html
 ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # Anything that is not a real file or directory -> hard 404 (handled by 404.html)
+  # --- 1. Redirect legacy / ugly URLs to the clean path (301, on the real request only) ---
+  RewriteCond %{THE_REQUEST} \s/+(index\.html|Home\.dc\.html|home)[\s/?] [NC]
+  RewriteRule ^ / [R=301,L]
+
+  RewriteCond %{THE_REQUEST} \s/+Services\.dc\.html[\s/?] [NC]
+  RewriteRule ^ /services [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+Pricing\.dc\.html[\s/?] [NC]
+  RewriteRule ^ /pricing [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+About\.dc\.html[\s/?] [NC]
+  RewriteRule ^ /about [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+Contact\.dc\.html[\s/?] [NC]
+  RewriteRule ^ /contact [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+Legal\.dc\.html[\s/?] [NC]
+  RewriteRule ^ /legal [R=301,L]
+
+  # Drop any trailing slash on non-directory paths (/pricing/ -> /pricing)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+?)/+$ /$1 [R=301,L]
+
+  # --- 2. Serve the clean paths from the underlying .dc.html files (internal, URL unchanged) ---
+  RewriteRule ^$              Home.dc.html      [L]
+  RewriteRule ^services/?$    Services.dc.html  [L]
+  RewriteRule ^pricing/?$     Pricing.dc.html   [L]
+  RewriteRule ^about/?$       About.dc.html     [L]
+  RewriteRule ^contact/?$     Contact.dc.html   [L]
+  RewriteRule ^legal/?$       Legal.dc.html     [L]
+
+  # --- 3. Anything that is not a real file or directory -> hard 404 ---
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^ - [R=404,L]
