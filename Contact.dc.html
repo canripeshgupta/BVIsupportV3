@@ -164,9 +164,17 @@
         <textarea id="c-msg" rows="4" placeholder="e.g. ~60 BVI companies, mostly holding structures, a dozen with private-bank portfolios, three in arrears since 2023…" style="width:100%;box-sizing:border-box;border:1px solid #D8D0B8;background:#F5F2E9;padding:13px 14px;font-family:'IBM Plex Sans',sans-serif;font-size:15px;color:#1E2B24;outline:none;resize:vertical"></textarea>
       </div>
       <button onClick="{{ submit }}" style="width:100%;background:#132A20;color:#F5F2E9;border:none;padding:16px;font-family:'IBM Plex Sans',sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em;cursor:pointer" style-hover="background:#9A7B3F;color:#132A20">{{ submitLabel }}</button>
-      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <sc-if value="{{ showNeed }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:12px;font-size:13px;color:#9A2B2B;text-align:center">Please add your name, email and a short note about the book.</div>
+      </sc-if>
+      <sc-if value="{{ showOk }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:16px;border:1px solid #9A7B3F;background:#F1EEDF;padding:18px 20px;text-align:center;font-size:14.5px;line-height:1.6;color:#132A20">
+          <span style="font-family:'EB Garamond',serif;font-weight:600;font-size:16px">Thank you — your enquiry is on its way.</span><br>We reply within one business day. A copy is kept on this device for your reference.
+        </div>
+      </sc-if>
+      <sc-if value="{{ showFallback }}" hint-placeholder-val="{{ false }}">
         <div style="margin-top:16px;border:1px solid #D8D0B8;background:#F5F2E9;padding:18px 20px">
-          <div style="font-size:14px;color:#3D4A41;margin-bottom:12px;text-align:center">Your enquiry is recorded. Send it to us now with one tap:</div>
+          <div style="font-size:14px;color:#3D4A41;margin-bottom:12px;text-align:center">We couldn't send it automatically just now — your enquiry is saved. Send it to us directly with one tap:</div>
           <div style="display:flex;gap:12px">
             <a href="{{ mailtoHref }}" style="flex:1;text-align:center;border:1px solid #9A7B3F;background:#FBF9F1;padding:12px;font-size:14.5px;font-weight:600;color:#132A20" style-hover="background:#132A20;color:#F5F2E9">Send via email</a>
             <a href="{{ waHref }}" target="_blank" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid #9A7B3F;background:#FBF9F1;padding:12px;font-size:14.5px;font-weight:600;color:#132A20" style-hover="background:#132A20;color:#F5F2E9"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>Send via WhatsApp</a>
@@ -226,6 +234,13 @@
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+// Lead delivery: each enquiry is POSTed to Web3Forms, which emails it to the
+// address registered for this access key AND keeps a searchable log + CSV
+// export in the Web3Forms dashboard. Register the key with
+// canripeshgupta@gmail.com at https://web3forms.com (free, no backend).
+// The key is not secret — it only identifies the destination inbox.
+const WEB3FORMS_ACCESS_KEY = "9fce3ee0-c984-412c-9d41-37bc6b14a65f";
+
 class Component extends DCLogic {
   componentDidMount() {
     const header = document.querySelector('header');
@@ -242,7 +257,7 @@ class Component extends DCLogic {
       io.observe(s);
     });
   }
-  state = { role: "Registered agent / CSP", sent: false, last: null };
+  state = { role: "Registered agent / CSP", status: "idle", last: null };
   readForm() {
     const v = (id) => (document.getElementById(id) || {}).value || "";
     return { date: new Date().toISOString(), name: v("c-name"), firm: v("c-firm"), email: v("c-email"), whatsapp: v("c-whatsapp"), role: this.state.role, message: v("c-msg") };
@@ -266,9 +281,30 @@ class Component extends DCLogic {
           pick: () => this.setState({ role: label }),
         };
       }),
-      submit: () => { const e = this.readForm(); this.saveEntry(e); this.setState({ sent: true, last: e }); },
-      submitLabel: this.state.sent ? "Recorded — now send it via email or WhatsApp below" : "Send your enquiry",
-      sent: this.state.sent,
+      submit: () => {
+        const e = this.readForm();
+        if (!e.name || !e.email || !e.message) { this.setState({ status: "need", last: e }); return; }
+        this.saveEntry(e);
+        this.setState({ status: "sending", last: e });
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_ACCESS_KEY,
+            subject: "New BVI Support enquiry — " + (e.firm || e.name),
+            from_name: "BVI Support website",
+            name: e.name, firm: e.firm, email: e.email, whatsapp: e.whatsapp,
+            role: e.role, message: e.message, replyto: e.email, botcheck: "",
+          }),
+        })
+          .then((r) => r.json().catch(() => ({})))
+          .then((d) => this.setState({ status: d && d.success ? "ok" : "error" }))
+          .catch(() => this.setState({ status: "error" }));
+      },
+      submitLabel: ({ sending: "Sending…", ok: "Sent ✓", error: "Try again" }[this.state.status] || "Send your enquiry"),
+      showNeed: this.state.status === "need",
+      showOk: this.state.status === "ok",
+      showFallback: this.state.status === "error",
       mailtoHref: (() => {
         const e = this.state.last || {};
         const body = `Name: ${e.name || ""}\nFirm: ${e.firm || ""}\nEmail: ${e.email || ""}\nWhatsApp: ${e.whatsapp || ""}\nI am a: ${e.role || ""}\n\nThe book, roughly:\n${e.message || ""}`;
