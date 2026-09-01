@@ -1,0 +1,17 @@
+# Return a proper 404 for missing pages.
+# Without this, Hostinger/LiteSpeed serves a generic "503 Service Unavailable"
+# for any path that doesn't exist, which tells search engines to retry later
+# instead of recording the page as gone.
+
+Options -Indexes
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Anything that is not a real file or directory -> hard 404 (handled by 404.html)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ - [R=404,L]
+</IfModule>
