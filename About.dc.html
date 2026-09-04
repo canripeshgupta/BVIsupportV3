@@ -16,6 +16,8 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BVI Support">
 <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://bvisupport.com/about">
+<meta property="og:url" content="https://bvisupport.com/about">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
@@ -86,8 +88,16 @@
     #dc-root header,#dc-root section,#dc-root footer{padding-left:16px !important;padding-right:16px !important;}
     #dc-root [style*="grid-template-columns"]{gap:16px !important;}
   }
+
+  /* accessibility */
+  #dc-root a:focus-visible,#dc-root button:focus-visible,
+  #dc-root input:focus-visible,#dc-root textarea:focus-visible{outline:2px solid #9A7B3F;outline-offset:2px;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    #dc-root section,#dc-root footer{opacity:1 !important;transform:none !important;transition:none !important;}
+    *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+  }
 </style>
-<script src="/image-slot.js"></script>
 </helmet>
 
 <div style="min-width:0;overflow-x:clip">
@@ -404,13 +414,6 @@ class Component extends DCLogic {
         {num:"ii", title:"Secure data sharing", body:"Files are exchanged and stored through secure, access-controlled channels, limited to the named engagement team."},
         {num:"iii", title:"Named-team access only", body:"Preparer, reviewer, engagement manager. No one else touches the file; nothing is outsourced onward without written consent."},
         {num:"iv", title:"Retention & deletion", body:"Working papers retained per the data processing agreement, then deleted on schedule — with confirmation if you want it."},
-      ],
-      docs: [
-        {title:"Worked example — portfolio company", sub:"Anonymised. Custodian statement through to FAR-ready statements."},
-        {title:"Information security summary", sub:"What your compliance officer will ask for."},
-        {title:"Mutual NDA (template)", sub:"Available on request — signed before transfer if you prefer one."},
-        {title:"Data processing agreement (template)", sub:"Purpose, retention, deletion, sub-processors."},
-        {title:"Rate card (PDF)", sub:"Indicative tiers and volume terms."},
       ],
     };
   }

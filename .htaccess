@@ -14,6 +14,9 @@ ErrorDocument 404 /404.html
   RewriteEngine On
   RewriteBase /
 
+  # --- 0. Repo housekeeping files are not part of the website ---
+  RewriteRule \.(md|json)$ - [R=404,L]
+
   # --- 1. Redirect legacy / ugly URLs to the clean path (301, on the real request only) ---
   RewriteCond %{THE_REQUEST} \s/+(index\.html|Home\.dc\.html|home)[\s/?] [NC]
   RewriteRule ^ / [R=301,L]

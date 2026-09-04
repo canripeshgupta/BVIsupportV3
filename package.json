@@ -1,7 +1,6 @@
 {
   "name": "bvisupport",
   "version": "1.0.0",
-  "scripts": {
-    "build": "mkdir -p dist && cp *.html *.js *.png dist/"
-  }
+  "private": true,
+  "description": "BVI Support — static website. No build step; the deploy publishes the repo root."
 }

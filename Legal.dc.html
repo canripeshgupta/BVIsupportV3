@@ -12,6 +12,8 @@
 <title>Privacy &amp; Terms | BVI Support</title>
 <meta name="description" content="Privacy policy and terms of engagement for BVI Support — how client records are handled, retained and deleted, and the terms on which our accounting services are provided.">
 <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://bvisupport.com/legal">
+<meta property="og:url" content="https://bvisupport.com/legal">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -81,6 +83,15 @@
   @media (max-width:520px){
     #dc-root header,#dc-root section,#dc-root footer{padding-left:16px !important;padding-right:16px !important;}
     #dc-root [style*="grid-template-columns"]{gap:16px !important;}
+  }
+
+  /* accessibility */
+  #dc-root a:focus-visible,#dc-root button:focus-visible,
+  #dc-root input:focus-visible,#dc-root textarea:focus-visible{outline:2px solid #9A7B3F;outline-offset:2px;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    #dc-root section,#dc-root footer{opacity:1 !important;transform:none !important;transition:none !important;}
+    *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
   }
 </style>
 </helmet>
@@ -179,6 +190,7 @@ class Component extends DCLogic {
         {title:"Why we process it", body:"Solely to prepare the accounting work you engage us for, to communicate about it, and to meet our own professional and legal obligations. We do not sell data, run advertising, or use client records for any other purpose."},
         {title:"Who can access it", body:"The named engagement team only: preparer, reviewer and engagement manager. Nothing is outsourced onward without your written consent."},
         {title:"How it is protected", body:"Files are shared and stored through secure, access-controlled channels, restricted to the engagement team. The information-security summary is available on request."},
+        {title:"The website enquiry form", body:"Messages sent through the contact form are delivered to us by Web3Forms (Encode Labs, USA), a form-relay service, acting on our instructions solely to pass your message to us by email. The form is for a short description of the work only — please do not submit client records through it."},
         {title:"How long we keep it", body:"Working papers are retained for the period set in the data processing agreement, then deleted on schedule — with written confirmation of deletion if you request it."},
         {title:"Your rights", body:"You may request a copy, correction or deletion of the personal data we hold, at any time, by writing to contact@bvisupport.com. We respond within one business day."},
       ],

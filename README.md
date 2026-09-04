@@ -8,8 +8,8 @@ Static website for BVI Support: accounting, financial statements and Annual Fina
 - `404.html` — not-found page (plain HTML, no runtime)
 - `.htaccess` — clean URLs + redirects + 404 handling (see below)
 - `support.js` — page runtime (required, do not remove)
-- `image-slot.js` — image placeholder component (required)
-- `favicon.png`
+- `robots.txt`, `sitemap.xml`
+- `favicon.png`, `ashwani.jpg`, `nripesh.jpg`
 
 ## URLs
 
