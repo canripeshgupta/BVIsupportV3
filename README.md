@@ -17,7 +17,13 @@ Pages are served at clean paths — `/`, `/services`, `/pricing`, `/about`, `/co
 
 ## Deploy
 
-Pure static site — no build step. Auto-deploys to bvisupport.com on push to `main`.
+Auto-deploys to bvisupport.com on push to `main`.
+
+> **Do not remove the `build` script from `package.json`.** Hostinger's pipeline
+> runs `npm run build` on every deploy (Framework: Other, Node 22.x). The script's
+> `dist/` output is unused — the site is published from the repo root — but if the
+> script is missing, `npm run build` errors and the whole deploy fails with
+> "Build failed". It exists purely to give that command something to succeed at.
 
 - **Hostinger:** LiteSpeed honours `.htaccess`. Publish directory = repo root.
 - **Netlify / Vercel:** would need the clean-URL rules ported to `_redirects` / `vercel.json` (currently Apache/LiteSpeed `.htaccess` only).
