@@ -35,9 +35,9 @@ ErrorDocument 404 /404.html
   #  guessing disabled it is worth being explicit and keeping it a 301.)
   RewriteRule ^(services|pricing|about|contact|legal)$ /$1/ [R=301,L]
 
-  # --- 3. /index.html -> / ---
-  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
-  RewriteRule ^ / [R=301,L]
+  # --- 3. Any explicit index.html -> its directory (/about/index.html -> /about/) ---
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+  RewriteRule ^(.*)index\.html$ /$1 [R=301,L]
 
   # --- 4. Anything that is not a real file or directory -> hard 404 ---
   # Hostinger/LiteSpeed otherwise answers missing paths with a generic

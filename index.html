@@ -74,6 +74,15 @@
   footer>div>div{flex-wrap:wrap!important;}
   a[style*="padding:16px 36px"],a[style*="padding:15px 30px"],a[style*="padding:17px 38px"]{display:block!important;text-align:center;}
 }
+
+/* --- accessibility (maintained outside the canvas export) --- */
+img{max-width:100%;height:auto;}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #9A7B3F;outline-offset:2px;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  section,footer{opacity:1 !important;transform:none !important;transition:none !important;}
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+}
 </style>
 </helmet>
 
