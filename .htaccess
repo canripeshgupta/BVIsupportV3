@@ -1,13 +1,12 @@
-# Clean URLs + proper 404s for the BVI Support static site.
+# Serving rules for the BVI Support static site.
 #
-# The pages are the *.dc.html files. This maps them onto extensionless paths
-# (/, /services, /pricing, /about, /contact, /legal) without an extra redirect,
-# and 301s the old/ugly URLs to the clean ones. It also forces a real 404 for
-# missing paths — Hostinger/LiteSpeed otherwise answers those with a generic
-# "503 Service Unavailable".
+# Pages now live as real directories (/services/index.html, …), so Apache and
+# LiteSpeed serve the clean URLs natively — DirectoryIndex + DirectorySlash do
+# the work and no rewrite is needed for them. What is left here is the 404
+# behaviour and 301s from the URLs the site used before this layout.
 
 Options -Indexes -MultiViews
-DirectoryIndex Home.dc.html
+DirectoryIndex index.html
 ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
@@ -17,34 +16,32 @@ ErrorDocument 404 /404.html
   # --- 0. Repo housekeeping files are not part of the website ---
   RewriteRule \.(md|json)$ - [R=404,L]
 
-  # --- 1. Redirect legacy / ugly URLs to the clean path (301, on the real request only) ---
-  RewriteCond %{THE_REQUEST} \s/+(index\.html|Home\.dc\.html|home)[\s/?] [NC]
+  # --- 1. Legacy *.dc.html URLs (the pre-2026-09-09 layout) -> clean paths ---
+  RewriteCond %{THE_REQUEST} \s/+Home\.dc\.html[\s/?] [NC]
+  RewriteRule ^ / [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+Services\.dc\.html[\s/?] [NC]
+  RewriteRule ^ /services/ [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+Pricing\.dc\.html[\s/?] [NC]
+  RewriteRule ^ /pricing/ [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+About\.dc\.html[\s/?] [NC]
+  RewriteRule ^ /about/ [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+Contact\.dc\.html[\s/?] [NC]
+  RewriteRule ^ /contact/ [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+Legal\.dc\.html[\s/?] [NC]
+  RewriteRule ^ /legal/ [R=301,L]
+
+  # --- 2. Extensionless URLs from the previous layout -> trailing-slash form ---
+  # (DirectorySlash would already do this, but only with MultiViews-style
+  #  guessing disabled it is worth being explicit and keeping it a 301.)
+  RewriteRule ^(services|pricing|about|contact|legal)$ /$1/ [R=301,L]
+
+  # --- 3. /index.html -> / ---
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
   RewriteRule ^ / [R=301,L]
 
-  RewriteCond %{THE_REQUEST} \s/+Services\.dc\.html[\s/?] [NC]
-  RewriteRule ^ /services [R=301,L]
-  RewriteCond %{THE_REQUEST} \s/+Pricing\.dc\.html[\s/?] [NC]
-  RewriteRule ^ /pricing [R=301,L]
-  RewriteCond %{THE_REQUEST} \s/+About\.dc\.html[\s/?] [NC]
-  RewriteRule ^ /about [R=301,L]
-  RewriteCond %{THE_REQUEST} \s/+Contact\.dc\.html[\s/?] [NC]
-  RewriteRule ^ /contact [R=301,L]
-  RewriteCond %{THE_REQUEST} \s/+Legal\.dc\.html[\s/?] [NC]
-  RewriteRule ^ /legal [R=301,L]
-
-  # Drop any trailing slash on non-directory paths (/pricing/ -> /pricing)
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.+?)/+$ /$1 [R=301,L]
-
-  # --- 2. Serve the clean paths from the underlying .dc.html files (internal, URL unchanged) ---
-  RewriteRule ^$              Home.dc.html      [L]
-  RewriteRule ^services/?$    Services.dc.html  [L]
-  RewriteRule ^pricing/?$     Pricing.dc.html   [L]
-  RewriteRule ^about/?$       About.dc.html     [L]
-  RewriteRule ^contact/?$     Contact.dc.html   [L]
-  RewriteRule ^legal/?$       Legal.dc.html     [L]
-
-  # --- 3. Anything that is not a real file or directory -> hard 404 ---
+  # --- 4. Anything that is not a real file or directory -> hard 404 ---
+  # Hostinger/LiteSpeed otherwise answers missing paths with a generic
+  # "503 Service Unavailable".
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^ - [R=404,L]

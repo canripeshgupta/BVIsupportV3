@@ -19,7 +19,7 @@
 <link rel="canonical" href="https://bvisupport.com/">
 <meta property="og:url" content="https://bvisupport.com/">
 <link rel="icon" type="image/png" href="/favicon.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"BVI Support","description":"Preparation of BVI Financial Annual Returns, IFRS financial statements and accounting record keeping for BVI companies — for registered agents and corporate service providers.","url":"https://bvisupport.com","email":"contact@bvisupport.com","telephone":"+1-778-636-0270","address":{"@type":"PostalAddress","streetAddress":"Flat No. 605, Narmada Blk N-4, Sec-D, Pkt-6, Vasant Kunj","addressLocality":"New Delhi","postalCode":"110070","addressCountry":"IN"},"parentOrganization":{"@type":"Organization","name":"Integrated Accounting and Business Services Pvt Ltd","identifier":"CIN U74140DL2019PTC356826"},"priceRange":"$150 - $850","areaServed":"Worldwide"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"BVI Support","description":"Preparation of BVI Financial Annual Returns, IFRS financial statements and accounting record keeping for BVI companies — for registered agents and corporate service providers.","url":"https://bvisupport.com","email":"contact@bvisupport.com","telephone":"+1-778-636-0270","address":{"@type":"PostalAddress","streetAddress":"Flat No. 605, Narmada Blk N-4, Sec-D, Pkt-6, Vasant Kunj","addressLocality":"New Delhi","postalCode":"110070","addressCountry":"IN"},"parentOrganization":{"@type":"Organization","name":"Integrated Accounting and Business Services Pvt Ltd","identifier":"CIN U74140DL2019PTC356826"},"priceRange":"$100 - $750+","areaServed":"Worldwide"}</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
@@ -31,78 +31,53 @@
   a:hover{color:#7C6230;}
   ::selection{background:#132A20;color:#F5F2E9;}
 
-  /* ===================================================================
-     RESPONSIVE — tablet & mobile
-     The page is authored at a fixed desktop width with inline styles;
-     these rules override those inline styles at narrower widths.
-     =================================================================== */
-  img{max-width:100%;height:auto;}
-
-  @media (max-width:1180px){
-    /* release the fixed 1100px min-width shell */
-    #dc-root [style*="min-width:1100px"],
-    #dc-root [style*="min-width: 1100px"]{min-width:0 !important;}
-  }
-
-  @media (max-width:960px){
-    /* collapse every multi-column grid to a single column */
-    #dc-root [style*="grid-template-columns"]{grid-template-columns:1fr !important;}
-
-    /* tame oversized gaps once content is stacked */
-    #dc-root [style*="gap:80px"],#dc-root [style*="gap: 80px"],
-    #dc-root [style*="gap:72px"],#dc-root [style*="gap: 72px"],
-    #dc-root [style*="gap:64px"],#dc-root [style*="gap: 64px"],
-    #dc-root [style*="gap:48px"],#dc-root [style*="gap: 48px"]{gap:28px !important;}
-
-    /* trim the wide frame padding */
-    #dc-root header,#dc-root section,#dc-root footer{
-      padding-left:22px !important;padding-right:22px !important;
-    }
-    #dc-root [style*="padding: 84px 56px;"],#dc-root [style*="padding: 88px 56px;"],
-    #dc-root [style*="padding: 92px 56px;"],#dc-root [style*="padding: 96px 56px;"],
-    #dc-root [style*="padding: 100px 56px;"],#dc-root [style*="padding: 72px 56px;"],
-    #dc-root [style*="padding: 80px 56px;"]{padding-top:60px !important;padding-bottom:60px !important;}
-
-    /* header + nav wrap instead of overflowing */
-    #dc-root header{flex-wrap:wrap;gap:12px 18px;padding-top:14px !important;padding-bottom:14px !important;}
-    #dc-root nav{flex-wrap:wrap;gap:12px 18px !important;font-size:13px !important;}
-
-    /* flex rows that distribute space are allowed to wrap */
-    #dc-root [style*="display: flex"][style*="justify-content"]{flex-wrap:wrap;}
-
-    /* hide oversized hero decoration squares that would overlap text */
-    #dc-root [style*="width: 190px"][style*="position: absolute"]{display:none !important;}
-    /* vertical dividers / no-wrap rules don't make sense once stacked */
-    #dc-root [style*="border-right"]{border-right:0 !important;}
-    #dc-root [style*="flex-wrap:nowrap"],#dc-root [style*="flex-wrap: nowrap"]{flex-wrap:wrap !important;}
-    #dc-root [style*="white-space:nowrap"],#dc-root [style*="white-space: nowrap"]{white-space:normal !important;}
-
-    /* drop hard-coded pixel widths */
-    #dc-root [style*="width:656px"],#dc-root [style*="width: 656px"]{width:auto !important;height:auto !important;}
-
-    /* fluid headings */
-    #dc-root h1{font-size:clamp(27px,6.6vw,40px) !important;}
-    #dc-root h2{font-size:clamp(23px,5.2vw,32px) !important;}
-    #dc-root h3,#dc-root h4{font-size:clamp(19px,4.4vw,25px) !important;}
-  }
-
-  @media (max-width:520px){
-    #dc-root header,#dc-root section,#dc-root footer{padding-left:16px !important;padding-right:16px !important;}
-    #dc-root [style*="grid-template-columns"]{gap:16px !important;}
-  }
-
-  /* accessibility */
-  #dc-root a:focus-visible,#dc-root button:focus-visible,
-  #dc-root input:focus-visible,#dc-root textarea:focus-visible{outline:2px solid #9A7B3F;outline-offset:2px;}
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto;}
-    #dc-root section,#dc-root footer{opacity:1 !important;transform:none !important;transition:none !important;}
-    *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
-  }
+/* --- responsive --- */
+[data-nav-btn]{display:none;}
+@media (max-width:1024px){
+  html,body{overflow-x:hidden;}
+  header{padding:14px 22px!important;}
+  [data-nav-btn]{display:flex!important;}
+  nav[data-nav]{display:none!important;position:absolute;top:100%;left:0;right:0;background:#F5F2E9;flex-direction:column!important;align-items:stretch!important;gap:0!important;padding:8px 22px 20px!important;border-bottom:1px solid #9A7B3F;box-shadow:0 24px 40px rgba(19,42,32,.15);}
+  nav[data-nav].open{display:flex!important;}
+  nav[data-nav] a{padding:13px 4px!important;font-size:17px!important;border-bottom:1px solid rgba(154,123,63,.2);}
+  nav[data-nav] a:last-of-type{margin-top:12px;text-align:center;border-bottom:none;}
+  section,footer{padding-left:22px!important;padding-right:22px!important;}
+  section>div,footer>div{min-width:0!important;}
+  div[style*="grid-template-columns"]{grid-template-columns:1fr!important;}
+  div[style*="repeat(4"],div[style*="repeat(5"]{grid-template-columns:repeat(2,1fr)!important;}
+  section{padding-top:44px!important;padding-bottom:44px!important;}
+  section div[style*="margin-bottom:64px"],section div[style*="margin-bottom:56px"]{margin-bottom:28px!important;}
+  section div[style*="margin-bottom:52px"],section div[style*="margin-bottom:48px"],section div[style*="margin-bottom:44px"],section div[style*="margin-bottom:40px"],section div[style*="margin-bottom:36px"]{margin-bottom:24px!important;}
+  section p[style*="margin:0 0 44px"],section p[style*="margin:0 0 52px"],section p[style*="margin:0 0 56px"]{margin-bottom:24px!important;}
+  section div[style*="margin-top:52px"],section div[style*="margin-top:40px"],section div[style*="margin-top:36px"]{margin-top:24px!important;}
+  section h2{margin-bottom:12px!important;}
+  footer{padding-top:36px!important;padding-bottom:36px!important;}
+  div[style*="position:sticky"]{position:static!important;}
+  h1{font-size:36px!important;line-height:1.2!important;}
+  h2{font-size:28px!important;}
+  div[style*="gap:80px"],div[style*="gap:72px"],div[style*="gap:64px"]{gap:28px!important;}
+  div[style*="gap:56px"],div[style*="gap:48px"]{gap:18px!important;}
+  section a[style*="padding:42px 42px 46px"]{padding:24px 22px 26px!important;}
+  section div[style*="padding:52px 0"]{padding:26px 0!important;}
+  section div[style*="padding:38px 38px 34px"],section div[style*="padding:38px 36px"]{padding:26px 22px!important;}
+  section div[style*="padding:26px 28px"]{padding:20px 20px!important;}
+  section div[style*="grid-template-columns:240px"]{gap:8px!important;padding:16px 0!important;}
+  section div[style*="grid-template-columns:180px"]{gap:12px!important;}
+  section div[style*="padding:40px 40px"]{padding:24px 22px!important;}
+  section{background-attachment:scroll!important;}
+}
+@media (max-width:640px){
+  div[style*="repeat(4"],div[style*="repeat(5"]{grid-template-columns:1fr!important;}
+  h1{font-size:30px!important;}
+  h2{font-size:25px!important;}
+  section div[style*="display:flex"][style*="gap:36px"],section div[style*="display:flex"][style*="gap:40px"],section div[style*="display:flex"][style*="gap:44px"]{flex-wrap:wrap!important;}
+  footer>div>div{flex-wrap:wrap!important;}
+  a[style*="padding:16px 36px"],a[style*="padding:15px 30px"],a[style*="padding:17px 38px"]{display:block!important;text-align:center;}
+}
 </style>
 </helmet>
 
-<div style="min-width:0;overflow-x:clip">
+<div>
 <!-- HEADER -->
 <header style="display:flex;align-items:center;justify-content:space-between;padding:22px 56px;border-bottom:1px solid #9A7B3F;background:#F5F2E9;position:sticky;top:0;z-index:10">
   <a href="/" style="display:flex;align-items:center;gap:14px;color:#132A20">
@@ -118,11 +93,12 @@
       <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;color:#8A8062;text-transform:uppercase">Accounting &amp; compliance for BVI companies</div>
     </div>
   </a>
-  <nav style="display:flex;align-items:center;gap:34px;font-size:15px;font-weight:500">
-    <a href="/services" style="color:#3D4A41" style-hover="color:#9A7B3F">Services</a>
-    <a href="/pricing" style="color:#3D4A41" style-hover="color:#9A7B3F">Pricing</a>
-    <a href="/about" style="color:#3D4A41" style-hover="color:#9A7B3F">About &amp; Credentials</a>
-    <a href="/contact" style="background:#132A20;color:#F5F2E9;padding:12px 24px;font-weight:500;letter-spacing:.02em" style-hover="background:#9A7B3F;color:#132A20">Contact Today!</a>
+  <button data-nav-btn aria-label="Menu" style="display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:1px solid #9A7B3F;padding:0;align-items:center;cursor:pointer"><span style="width:20px;height:2px;background:#132A20;display:block"></span><span style="width:20px;height:2px;background:#132A20;display:block"></span><span style="width:20px;height:2px;background:#132A20;display:block"></span></button>
+  <nav data-nav style="display:flex;align-items:center;gap:34px;font-size:15px;font-weight:500">
+    <a href="/services/" style="color:#3D4A41" style-hover="color:#9A7B3F">Services</a>
+    <a href="/pricing/" style="color:#3D4A41" style-hover="color:#9A7B3F">Pricing</a>
+    <a href="/about/" style="color:#3D4A41" style-hover="color:#9A7B3F">About</a>
+    <a href="/contact/" style="background:#132A20;color:#F5F2E9;padding:12px 24px;font-weight:500;letter-spacing:.02em" style-hover="background:#9A7B3F;color:#132A20">Contact Today!</a>
   </nav>
 </header>
 
@@ -152,8 +128,8 @@
           <div style="font-family:'EB Garamond',serif;font-style:italic;font-size:16px;color:#C9A55C">Qualified &amp; experienced team · Specialised in BVI companies</div>
         </div>
         <div style="display:flex;gap:14px;align-items:center">
-          <a href="/contact" style="background:#9A7B3F;color:#132A20;padding:16px 32px;font-weight:600;font-size:16px;letter-spacing:.02em" style-hover="background:#C9A55C">Send two files — free trial</a>
-          <a href="/services" style="border:1px solid #3D5548;color:#E9EBE2;padding:16px 32px;font-weight:500;font-size:16px" style-hover="border-color:#9A7B3F;color:#C9A55C">What we prepare</a>
+          <a href="/contact/" style="background:#9A7B3F;color:#132A20;padding:16px 32px;font-weight:600;font-size:16px;letter-spacing:.02em" style-hover="background:#C9A55C">Send two files — free trial</a>
+          <a href="/services/" style="border:1px solid #3D5548;color:#E9EBE2;padding:16px 32px;font-weight:500;font-size:16px" style-hover="border-color:#9A7B3F;color:#C9A55C">What we prepare</a>
         </div>
       </div>
       <!-- FAR document mockup -->
@@ -194,12 +170,12 @@
 
 <!-- AUDIENCE STRIP -->
 <section style="background:#EDE8D8;border-bottom:1px solid #D8D0B8;padding:0 56px">
-  <div style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;padding:30px 0">
-    <div>
+  <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px;padding:30px 0">
+    <div style="flex:1 1 560px;min-width:0">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#9A7B3F;margin-bottom:8px">B2B only — for registered agents &amp; corporate service providers</div>
       <div style="font-size:15.5px;line-height:1.6;color:#3D4A41;max-width:80ch">White-label, back-office preparation across your whole client book — delivered in your template, your relationship stays yours, and we never approach end clients.</div>
     </div>
-    <a href="/contact" style="flex-shrink:0;display:flex;align-items:center;gap:12px;background:#132A20;color:#F5F2E9;padding:14px 26px;font-size:15px;font-weight:600;letter-spacing:.02em" style-hover="background:#9A7B3F;color:#132A20">
+    <a href="/contact/" style="flex-shrink:0;display:flex;align-items:center;gap:12px;background:#132A20;color:#F5F2E9;padding:14px 26px;font-size:15px;font-weight:600;letter-spacing:.02em" style-hover="background:#9A7B3F;color:#132A20">
       <span style="width:30px;height:30px;border:1px solid #9A7B3F;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="width:11px;height:11px;border:1.5px solid #C9A55C;border-radius:50%;display:block;position:relative"><span style="position:absolute;top:4px;left:4.5px;width:1.5px;height:4px;background:#C9A55C;transform:rotate(-40deg);transform-origin:top"></span></span></span>
       Book a call
     </a>
@@ -217,11 +193,11 @@
         </div>
         <h2 style="font-family:'EB Garamond',serif;font-weight:500;font-size:40px;margin:0;color:#132A20;max-width:24ch;text-wrap:pretty">A back office for the accounting your clients owe.</h2>
       </div>
-      <a href="/services" style="font-size:15px;font-weight:500;flex-shrink:0">All services →</a>
+      <a href="/services/" style="font-size:15px;font-weight:500;flex-shrink:0">All services →</a>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#D8D0B8;border:1px solid #D8D0B8">
       <sc-for list="{{ services }}" as="svc" hint-placeholder-count="4">
-        <a href="/services" style="background:#F5F2E9;padding:42px 42px 46px;color:#1E2B24;display:block" style-hover="background:#FBF9F1">
+        <a href="/services/" style="background:#F5F2E9;padding:42px 42px 46px;color:#1E2B24;display:block" style-hover="background:#FBF9F1">
           <div style="font-family:'EB Garamond',serif;font-size:16px;font-style:italic;color:#9A7B3F;margin-bottom:16px">{{ svc.num }}</div>
           <h3 style="font-family:'EB Garamond',serif;font-weight:600;font-size:25px;margin:0 0 12px;color:#132A20">{{ svc.title }}</h3>
           <p style="font-size:15.5px;line-height:1.65;color:#5C6659;margin:0 0 16px">{{ svc.body }}</p>
@@ -360,7 +336,7 @@
     <div style="font-family:'EB Garamond',serif;font-size:17px;font-style:italic;color:#C9A55C;margin-bottom:18px">Two files, seven working days, no charge.</div>
     <h2 style="font-family:'EB Garamond',serif;font-weight:500;font-size:44px;margin:0 0 20px;color:#F5F2E9;text-wrap:pretty">Test the work before you commit to it.</h2>
     <p style="font-size:16px;line-height:1.7;color:#A8B5A5;margin:0 0 38px">Pick the files you would normally dread — the private-bank portfolios, the arrears years, the ones with no records at all.</p>
-    <a href="/contact" style="display:inline-block;background:#9A7B3F;color:#132A20;padding:17px 40px;font-weight:600;font-size:16.5px;letter-spacing:.02em" style-hover="background:#C9A55C">Start the free trial</a>
+    <a href="/contact/" style="display:inline-block;background:#9A7B3F;color:#132A20;padding:17px 40px;font-weight:600;font-size:16.5px;letter-spacing:.02em" style-hover="background:#C9A55C">Start the free trial</a>
   </div>
 </section>
 
@@ -384,10 +360,10 @@
       <div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8A9A8C;margin-bottom:12px">Pages</div>
         <div style="display:flex;flex-direction:column;gap:8px">
-          <a href="/services" style="color:#8FA093" style-hover="color:#C9A55C">Services</a>
-          <a href="/pricing" style="color:#8FA093" style-hover="color:#C9A55C">Pricing</a>
-          <a href="/about" style="color:#8FA093" style-hover="color:#C9A55C">About &amp; credentials</a>
-          <a href="/contact" style="color:#8FA093" style-hover="color:#C9A55C">Contact</a>
+          <a href="/services/" style="color:#8FA093" style-hover="color:#C9A55C">Services</a>
+          <a href="/pricing/" style="color:#8FA093" style-hover="color:#C9A55C">Pricing</a>
+          <a href="/about/" style="color:#8FA093" style-hover="color:#C9A55C">About &amp; credentials</a>
+          <a href="/contact/" style="color:#8FA093" style-hover="color:#C9A55C">Contact</a>
         </div>
       </div>
       <div>
@@ -408,7 +384,7 @@
         </div>
       </div>
     </div>
-    <div style="border-top:1px solid rgba(154,123,63,.3);padding-top:22px;font-size:11px;color:#8A9A8C;max-width:112ch">BVI Support is a trading name of Integrated Accounting &amp; Business Services Private Limited, an independent accounting services provider. It is not affiliated with, endorsed by, or connected to the BVI Financial Services Commission, the Registry of Corporate Affairs, BVI Finance, or the Government of the Virgin Islands. Nothing on this site is legal, tax or accounting advice. <a href="/legal" style="color:#C9A55C">Privacy &amp; Terms</a></div>
+    <div style="border-top:1px solid rgba(154,123,63,.3);padding-top:22px;font-size:11px;color:#8A9A8C;max-width:112ch">BVI Support is a trading name of Integrated Accounting &amp; Business Services Private Limited, an independent accounting services provider. It is not affiliated with, endorsed by, or connected to the BVI Financial Services Commission, the Registry of Corporate Affairs, BVI Finance, or the Government of the Virgin Islands. Nothing on this site is legal, tax or accounting advice. <a href="/legal/" style="color:#C9A55C">Privacy &amp; Terms</a></div>
   </div>
 </footer>
 </div>
@@ -417,6 +393,10 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
+    const __btn = document.querySelector('[data-nav-btn]');
+    const __nav = document.querySelector('[data-nav]');
+    if (__btn && __nav) { __btn.addEventListener('click', () => __nav.classList.toggle('open')); __nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => __nav.classList.remove('open'))); }
+
     const header = document.querySelector('header');
     const onScroll = () => { if (header) header.style.boxShadow = window.scrollY > 8 ? '0 6px 24px rgba(19,42,32,.14)' : 'none'; };
     window.addEventListener('scroll', onScroll, { passive: true });
