@@ -300,14 +300,7 @@ class Component extends DCLogic {
       showFallback: this.state.status === "error",
       mailtoHref: (() => {
         const e = this.state.last || {};
-        const body = `Name: ${e.name || ""}
-Firm: ${e.firm || ""}
-Email: ${e.email || ""}
-WhatsApp: ${e.whatsapp || ""}
-I am a: ${e.role || ""}
-
-The book, roughly:
-${e.message || ""}`;
+        const body = `Name: ${e.name || ""}\nFirm: ${e.firm || ""}\nEmail: ${e.email || ""}\nWhatsApp: ${e.whatsapp || ""}\nI am a: ${e.role || ""}\n\nThe book, roughly:\n${e.message || ""}`;
         return "mailto:contact@bvisupport.com?subject=" + encodeURIComponent("Enquiry — " + (e.firm || e.name || "BVI Support website")) + "&body=" + encodeURIComponent(body);
       })(),
       waHref: (() => {
