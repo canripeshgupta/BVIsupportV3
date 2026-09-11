@@ -52,20 +52,30 @@ re-apply them after each one:
 - The real leadership portraits on About (the export replaces them with empty
   `<image-slot>` placeholders)
 
-The export also **reverts content fixes** back to whatever the canvas still holds.
-These three came back as stale values in the 2026-09-09 export and will keep
-returning until the client corrects them in the canvas itself:
+The export can also carry values that differ from what is in the repo. Do not
+assume these are stale: on 2026-09-09 the price range and the WhatsApp number
+were the client's genuine updates, and were adopted. **Ask before reverting one.**
 
-| Value | Correct | Canvas still has |
+What the export does get wrong is encoding, not values:
+
+| Item | In the repo | In the export |
 |---|---|---|
-| `priceRange` in the Home page structured data | `$150 - $850` | `$100 - $750+` |
 | Pricing, hourly tier `tag:` | `Time & materials` | `Time &amp; materials` |
 | Pricing, hourly tier `price:` | `Starting from $15` | trailing non-breaking space |
-| Contact form WhatsApp fallback | `17786360270` | `919855142280` |
 
-`priceRange` must match the fixed-fee tier on the Pricing page; `Time &amp;`
-renders verbatim because bound values go through text interpolation, which
-escapes them.
+`Time &amp;` renders verbatim: bound values go through the runtime's text
+interpolation, which escapes them. The sibling tiers use raw characters
+(`Per file · fixed fee`), so the entity is an artefact, not a choice.
+
+Two consistency rules worth re-checking after any export, because the export has
+broken both:
+
+- the `priceRange` in the home page structured data must match the fixed-fee tier
+  on the Pricing page. The 2026-09-09 export updated the schema but left the
+  visible tier on the old figure.
+- all three WhatsApp links (contact form fallback, the Contact page button, the
+  home footer link) must point at the same number. That export updated only the
+  fallback.
 
 Contact email: contact@bvisupport.com · Phone: (+1) 778 636 0270 — both appear in every page footer and the Contact page.
 Contact-form leads are delivered by Web3Forms (access key in `contact/index.html`).
